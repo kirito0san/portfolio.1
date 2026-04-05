@@ -10,8 +10,6 @@ import Contact from './components/sections/Contact'
 export default function App() {
     return (
         <>
-            <Navbar />
-
             <main>
                 <Hero />
                 <Services />

@@ -32,15 +32,15 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled
-                ? 'bg-slate-950/90 backdrop-blur-md shadow-lg shadow-black/30 py-3'
-                : 'bg-transparent py-5'
+                ? 'py-3 shadow-lg backdrop-blur-md bg-slate-950/90 shadow-black/30'
+                : 'py-5 bg-transparent'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+            <div className="flex gap-4 justify-between items-center px-4 mx-auto max-w-7xl sm:px-6">
                 {/* Logo */}
                 <a
                     href="#home"
-                    className="text-xl font-bold text-white tracking-wide shrink-0"
+                    className="text-xl font-bold tracking-wide text-white shrink-0"
                     onClick={() => handleNavClick('#home')}
                 >
                     <span className="text-brand-400">{company.name.split('')[0]}</span>
@@ -48,7 +48,7 @@ export default function Navbar() {
                 </a>
 
                 {/* Desktop nav */}
-                <nav className="hidden md:flex items-center gap-1">
+                <nav className="hidden gap-1 items-center lg:flex">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
@@ -65,7 +65,7 @@ export default function Navbar() {
                 </nav>
 
                 {/* Right side: lang switcher + CTA */}
-                <div className="hidden md:flex items-center gap-3">
+                <div className="hidden gap-3 items-center lg:flex">
                     <LanguageSwitcher />
                     <a
                         href="#contact"
@@ -77,7 +77,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Mobile: lang + hamburger */}
-                <div className="md:hidden flex items-center gap-2">
+                <div className="flex gap-2 items-center lg:hidden">
                     <LanguageSwitcher />
                     <button
                         className="p-2 text-slate-300 hover:text-white"
@@ -93,10 +93,10 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             <div
-                className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                className={`lg:hidden overflow-hidden transition-all duration-300 ${menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
             >
-                <nav className="bg-slate-900/95 backdrop-blur-md px-4 pb-4 pt-2 flex flex-col gap-1">
+                <nav className="flex flex-col gap-1 px-4 pt-2 pb-4 backdrop-blur-md bg-slate-900/95">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
@@ -112,7 +112,7 @@ export default function Navbar() {
                     ))}
                     <a
                         href="#contact"
-                        className="mt-2 bg-brand-500 text-white text-sm font-semibold px-5 py-3 rounded-lg text-center"
+                        className="px-5 py-3 mt-2 text-sm font-semibold text-center text-white rounded-lg bg-brand-500"
                         onClick={() => handleNavClick('#contact')}
                     >
                         {t('nav.cta')}
