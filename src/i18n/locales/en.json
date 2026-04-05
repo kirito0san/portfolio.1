@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "team": "Our Team",
+    "testimonials": "Testimonials",
+    "contact": "Contact Us",
+    "cta": "Start Your Project"
+  },
+  "hero": {
+    "badge": "We're here to build with you",
+    "description": "A company specialized in providing integrated digital solutions that help our clients grow and excel in the market.",
+    "cta_primary": "View Our Work",
+    "cta_secondary": "Contact Us",
+    "scroll": "Scroll Down"
+  },
+  "stats": {
+    "projects": "Projects Done",
+    "clients": "Happy Clients",
+    "experience": "Years Experience",
+    "awards": "International Awards"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We provide integrated solutions covering all your digital needs"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "A selection of our finest work that we're proud to deliver to our clients",
+    "filter_all": "All",
+    "visit": "Visit Project",
+    "close": "Close"
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "An elite group of creative specialists working passionately to achieve your goals"
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "subtitle": "Our clients' trust is the greatest award we can receive"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a project in mind? Talk to us and we'll turn your ideas into reality",
+    "intro": "We're always available to talk. Whether you have a new project or want to develop an existing system, our team is ready to help.",
+    "email_label": "Email Address",
+    "phone_label": "Phone Number",
+    "address_label": "Address",
+    "name": "Full Name",
+    "name_ph": "Enter your name",
+    "email": "Email Address",
+    "email_ph": "example@email.com",
+    "message": "Your Message",
+    "message_ph": "Tell us about your project...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success_title": "Message Sent!",
+    "success_body": "We'll get back to you as soon as possible.",
+    "send_another": "Send Another Message"
+  },
+  "footer": {
+    "rights": "All Rights Reserved"
+  },
+  "modal": {
+    "visit": "Visit Project",
+    "close": "Close"
+  }
+}
