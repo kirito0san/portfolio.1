@@ -10,7 +10,7 @@ export const company = {
     description: 'شركة متخصصة في تقديم حلول رقمية متكاملة تساعد عملاءنا على النمو والتميز في السوق.',
     email: 'info@company.com',
     phone: '+20 100 000 0000',
-    address: 'القاهرة، مصر',
+    address: 'مكه , السعوديه',
     socialLinks: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
@@ -71,79 +71,59 @@ export const services = [
     },
 ]
 
+import tg1 from '../assets/tg1.webp'
+import tg2 from '../assets/tg2.webp'
+import tg3 from '../assets/tg3.webp'
+import tg4 from '../assets/tg4.webp'
+import tg5 from '../assets/tg5.webp'
+import tg6 from '../assets/tg6.webp'
+import tg7 from '../assets/tg7.webp'
+import tg8 from '../assets/tg8.webp'
+import tg9 from '../assets/tg9.webp'
+import zr1 from '../assets/zr1.webp'
+import zr2 from '../assets/zr2.webp'
+import zr3 from '../assets/zr3.webp'
+import zr4 from '../assets/zr4.webp'
+import zr5 from '../assets/zr5.webp'
+import ag1 from '../assets/ag1.webp'
+import ag2 from '../assets/ag2.webp'
+import ag3 from '../assets/ag3.webp'
+import ag4 from '../assets/ag4.webp'
+
 // ── المشاريع ─────────────────────────────────────────────────
 export const projects = [
     {
         id: 1,
-        title: 'منصة التجارة الإلكترونية',
-        titleEn: 'E-Commerce Platform',
+        title: 'TechGadgets Platform',
+        titleEn: 'TechGadgets Platform',
         category: 'تطوير الويب',
         categoryEn: 'Web Development',
-        description: 'منصة تسوق متكاملة بواجهة عصرية ونظام دفع آمن.',
-        descriptionEn: 'A complete shopping platform with a modern interface and secure payment.',
-        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80',
-        tags: ['React', 'Node.js', 'MongoDB'],
-        link: '#',
+        description: 'منصة متجر إلكتروني متقدمة بواجهة حديثة، لوحة تحكم إدارية، وتجربة تسوق متكاملة.',
+        descriptionEn: 'Advanced e-commerce platform with modern UI, admin dashboard, and full shopping experience.',
+        images: [tg1, tg2, tg3, tg4, tg5, tg6, tg7, tg8, tg9],
+        link: 'https://tech-gadgets-plum.vercel.app/',
     },
     {
         id: 2,
-        title: 'تطبيق إدارة المهام',
-        titleEn: 'Task Management App',
-        category: 'تطبيقات الجوال',
-        categoryEn: 'Mobile Apps',
-        description: 'تطبيق ذكي لإدارة المشاريع والمهام بتجربة سلسة.',
-        descriptionEn: 'A smart app for managing projects and tasks with a smooth experience.',
-        image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80',
-        tags: ['Flutter', 'Firebase'],
-        link: '#',
+        title: 'Agriculture Solutions Website',
+        titleEn: 'Agriculture Solutions Website',
+        category: 'تطوير الويب',
+        categoryEn: 'Web Development',
+        description: 'موقع عربي حديث للخدمات الزراعية يتضمن أنظمة ري، شتلات، وإدارة المزارع.',
+        descriptionEn: 'Modern Arabic website for agricultural services including irrigation systems, seedlings, and farm management.',
+        images: [zr1, zr2, zr3, zr4, zr5],
+        link: 'https://thamrat.vercel.app/',
     },
     {
         id: 3,
-        title: 'هوية بصرية لمطعم',
-        titleEn: 'Restaurant Branding',
-        category: 'تصميم UI/UX',
-        categoryEn: 'UI/UX Design',
-        description: 'تصميم هوية بصرية كاملة تعكس طابع المطعم الأصيل.',
-        descriptionEn: 'Complete visual identity design reflecting the restaurant\'s authentic character.',
-        image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80',
-        tags: ['Figma', 'Branding'],
-        link: '#',
-    },
-    {
-        id: 4,
-        title: 'لوحة تحكم إدارية',
-        titleEn: 'Admin Dashboard',
+        title: 'AGN E-commerce Store',
+        titleEn: 'AGN E-commerce Store',
         category: 'تطوير الويب',
         categoryEn: 'Web Development',
-        description: 'داشبورد تحليلي لمتابعة مؤشرات الأداء في الوقت الفعلي.',
-        descriptionEn: 'An analytical dashboard for tracking performance metrics in real-time.',
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
-        tags: ['React', 'TypeScript', 'Chart.js'],
-        link: '#',
-    },
-    {
-        id: 5,
-        title: 'تطبيق الصحة واللياقة',
-        titleEn: 'Health & Fitness App',
-        category: 'تطبيقات الجوال',
-        categoryEn: 'Mobile Apps',
-        description: 'تطبيق متكامل لتتبع الأهداف الصحية واليومية.',
-        descriptionEn: 'A comprehensive app for tracking health and daily goals.',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80',
-        tags: ['React Native', 'Redux'],
-        link: '#',
-    },
-    {
-        id: 6,
-        title: 'موقع شركة عقارات',
-        titleEn: 'Real Estate Website',
-        category: 'تطوير الويب',
-        categoryEn: 'Web Development',
-        description: 'موقع احترافي لعرض العقارات مع خريطة تفاعلية.',
-        descriptionEn: 'A professional website for showcasing properties with an interactive map.',
-        image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80',
-        tags: ['Next.js', 'Tailwind', 'Maps API'],
-        link: '#',
+        description: 'متجر إلكتروني كامل المميزات مع فلتر المنتجات، سلة التسوق، وتصميم متجاوب.',
+        descriptionEn: 'Full-featured online store with product filtering, cart system, and responsive design.',
+        images: [ag1, ag2, ag3, ag4],
+        link: 'https://agnadeenonline.com/',
     },
 ]
 
@@ -252,8 +232,8 @@ export const projectCategories = [
     'تصميم UI/UX',
 ]
 export const projectCategoriesEn = [
-    'الكل',
-    'تطوير الويب',
-    'تطبيقات الجوال',
-    'تصميم UI/UX',
+    'All',
+    'Web Development',
+    'Mobile Apps',
+    'UI/UX Design',
 ]

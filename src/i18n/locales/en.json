@@ -4,6 +4,7 @@
     "services": "Services",
     "projects": "Projects",
     "testimonials": "Testimonials",
+    "benefits": "benefits",
     "contact": "Contact Us",
     "cta": "Start Your Project"
   },
@@ -42,7 +43,7 @@
   "contact": {
     "title": "Contact Us",
     "subtitle": "Have a project in mind? Talk to us and we'll turn your ideas into reality",
-    "intro": "We're always available to talk. Whether you have a new project or want to develop an existing system, our team is ready to help.",
+    "intro": "We're always available to talk. Whether you have a new project or want to develop an existing system or Book a Free Consultation, our team is ready to help.",
     "email_label": "Email Address",
     "phone_label": "Phone Number",
     "address_label": "Address",

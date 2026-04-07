@@ -23,7 +23,7 @@ function ProjectCard({ project, onOpen }) {
             <div className="relative z-10">
                 <div className="relative h-52 overflow-hidden">
                     <img
-                        src={project.image}
+                        src={project.images ? project.images[0] : project.image}
                         alt={isAr ? project.title : (project.titleEn || project.title)}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -31,6 +31,11 @@ function ProjectCard({ project, onOpen }) {
                     <span className="absolute top-3 right-3 text-xs font-semibold bg-brand-500/80 text-white px-2.5 py-1 rounded-full backdrop-blur-sm">
                         {isAr ? project.category : (project.categoryEn || project.category)}
                     </span>
+                    {project.images && (
+                        <span className="absolute bottom-3 left-3 text-xs font-semibold bg-white/20 text-white px-2 py-0.5 rounded-full backdrop-blur-sm">
+                            {project.images.length} Screens
+                        </span>
+                    )}
                 </div>
                 <div className="p-5">
                     <h3 className="text-lg font-bold text-white mb-1 group-hover:text-brand-400 transition-colors">
@@ -39,13 +44,15 @@ function ProjectCard({ project, onOpen }) {
                     <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
                         {isAr ? project.description : (project.descriptionEn || project.description)}
                     </p>
-                    <div className="flex flex-wrap gap-1.5">
-                        {project.tags.map((tag) => (
-                            <span key={tag} className="px-2.5 py-1 text-xs bg-brand-500/10 text-brand-400/80 rounded-full border border-brand-500/10">
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
+                    {project.tags && (
+                        <div className="flex flex-wrap gap-1.5">
+                            {project.tags.map((tag) => (
+                                <span key={tag} className="px-2.5 py-1 text-xs bg-brand-500/10 text-brand-400/80 rounded-full border border-brand-500/10">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
@@ -59,6 +66,16 @@ export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null)
 
     const categories = isAr ? projectCategories : (projectCategoriesEn || projectCategories)
+
+    // Only show categories that actually have projects
+    const availableCategories = categories.filter((_, i) => {
+        if (i === 0) return true // "All" always shown
+        return projects.some((p) => {
+            const cat = isAr ? p.category : (p.categoryEn || p.category)
+            return cat === categories[i]
+        })
+    })
+    const availableIndices = availableCategories.map((cat) => categories.indexOf(cat))
 
     const filtered =
         activeCategory === 0
@@ -82,18 +99,21 @@ export default function Projects() {
 
                 {/* Filter */}
                 <div className="flex flex-wrap justify-center gap-2 mb-10">
-                    {categories.map((cat, i) => (
-                        <button
-                            key={cat}
-                            onClick={() => setActiveCategory(i)}
-                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${activeCategory === i
-                                ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30'
-                                : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
-                                }`}
-                        >
-                            {cat}
-                        </button>
-                    ))}
+                    {availableCategories.map((cat) => {
+                        const catIndex = categories.indexOf(cat)
+                        return (
+                            <button
+                                key={cat}
+                                onClick={() => setActiveCategory(catIndex)}
+                                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${activeCategory === catIndex
+                                    ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30'
+                                    : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
+                                    }`}
+                            >
+                                {cat}
+                            </button>
+                        )
+                    })}
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

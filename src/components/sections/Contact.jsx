@@ -30,27 +30,27 @@ export default function Contact() {
 
     return (
         <section id="contact" className="py-24 bg-slate-900/30">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="px-4 mx-auto max-w-7xl sm:px-6">
                 <SectionHeading
                     title={t('contact.title')}
                     subtitle={t('contact.subtitle')}
                 />
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
+                <div className="grid gap-12 items-start lg:grid-cols-2">
 
                     {/* Contact info */}
                     <div className="space-y-6">
-                        <p className="text-slate-400 leading-relaxed text-lg">{t('contact.intro')}</p>
+                        <p className="text-lg leading-relaxed text-slate-400">{t('contact.intro')}</p>
                         <div className="space-y-4">
                             {contactInfo.map((item) => (
                                 <a
                                     key={item.label}
                                     href={item.href}
-                                    className="flex items-center gap-4 p-4 bg-slate-900/60 border border-white/5 hover:border-brand-500/30 rounded-xl transition-all duration-200 group"
+                                    className="flex gap-4 items-center p-4 rounded-xl border transition-all duration-200 bg-slate-900/60 border-white/5 hover:border-brand-500/30 group"
                                 >
                                     <span className="text-2xl">{item.icon}</span>
                                     <div>
                                         <p className="text-xs text-slate-500 mb-0.5">{item.label}</p>
-                                        <p className="text-white font-medium group-hover:text-brand-400 transition-colors">
+                                        <p className="font-medium text-white transition-colors group-hover:text-brand-400">
                                             {item.value}
                                         </p>
                                     </div>
@@ -64,7 +64,7 @@ export default function Contact() {
                                     href={url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-brand-500/20 hover:text-brand-400 text-slate-400 text-xs font-semibold transition-all capitalize"
+                                    className="flex justify-center items-center w-10 h-10 text-xs font-semibold capitalize rounded-full transition-all bg-white/5 hover:bg-brand-500/20 hover:text-brand-400 text-slate-400"
                                 >
                                     {platform[0].toUpperCase()}
                                 </a>
@@ -73,15 +73,15 @@ export default function Contact() {
                     </div>
 
                     {/* Form */}
-                    <div className="bg-slate-900/60 border border-white/5 rounded-2xl p-8">
+                    <div className="p-8 rounded-2xl border bg-slate-900/60 border-white/5">
                         {submitted ? (
-                            <div className="text-center py-10 animate-fade-in">
-                                <div className="text-5xl mb-4">✅</div>
-                                <h3 className="text-xl font-bold text-white mb-2">{t('contact.success_title')}</h3>
+                            <div className="py-10 text-center animate-fade-in">
+                                <div className="mb-4 text-5xl">✅</div>
+                                <h3 className="mb-2 text-xl font-bold text-white">{t('contact.success_title')}</h3>
                                 <p className="text-slate-400">{t('contact.success_body')}</p>
                                 <button
                                     onClick={() => setSubmitted(false)}
-                                    className="mt-6 text-brand-400 hover:text-brand-300 text-sm font-medium transition-colors"
+                                    className="mt-6 text-sm font-medium transition-colors text-brand-400 hover:text-brand-300"
                                 >
                                     {t('contact.send_another')}
                                 </button>
@@ -89,31 +89,31 @@ export default function Contact() {
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-5">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">{t('contact.name')}</label>
+                                    <label className="block mb-2 text-sm font-medium text-slate-300">{t('contact.name')}</label>
                                     <input
                                         type="text" name="name" value={form.name}
                                         onChange={handleChange} required
                                         placeholder={t('contact.name_ph')}
-                                        className="w-full bg-slate-800/50 border border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl px-4 py-3 text-white placeholder-slate-500 outline-none transition-all"
+                                        className="px-4 py-3 w-full text-white rounded-xl border transition-all outline-none bg-slate-800/50 border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 placeholder-slate-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">{t('contact.email')}</label>
+                                    <label className="block mb-2 text-sm font-medium text-slate-300">{t('contact.email')}</label>
                                     <input
                                         type="email" name="email" value={form.email}
                                         onChange={handleChange} required
                                         placeholder={t('contact.email_ph')}
-                                        className="w-full bg-slate-800/50 border border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl px-4 py-3 text-white placeholder-slate-500 outline-none transition-all"
+                                        className="px-4 py-3 w-full text-white rounded-xl border transition-all outline-none bg-slate-800/50 border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 placeholder-slate-500"
                                         dir="ltr"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">{t('contact.message')}</label>
+                                    <label className="block mb-2 text-sm font-medium text-slate-300">{t('contact.message')}</label>
                                     <textarea
                                         name="message" value={form.message}
                                         onChange={handleChange} required rows={5}
                                         placeholder={t('contact.message_ph')}
-                                        className="w-full bg-slate-800/50 border border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl px-4 py-3 text-white placeholder-slate-500 outline-none transition-all resize-none"
+                                        className="px-4 py-3 w-full text-white rounded-xl border transition-all outline-none resize-none bg-slate-800/50 border-white/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 placeholder-slate-500"
                                     />
                                 </div>
                                 <button

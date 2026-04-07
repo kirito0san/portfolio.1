@@ -5,6 +5,7 @@ import { useCountUp } from '../../hooks/useCountUp'
 
 const heroPhrases = [
     { ar: 'حول أفكارك إلى واقع رقمي مبهر', en: 'Turning Ideas Into Digital Reality' },
+    { ar: 'احجز استشارة مجانية وابدأ أول خطوة', en: 'Book a Free Consultation and Take Your First Step' },
     { ar: 'حلول تقنية مبتكرة لنمو أعمالك', en: 'Innovative Tech Solutions For Business Growth' },
     { ar: 'نصمم تجارب رقمية لا تُنسى', en: 'We Design Unforgettable Digital Experiences' },
     { ar: 'شريكك في النجاح الرقمي', en: 'Your Digital Success Partner' },
@@ -29,13 +30,13 @@ export default function Hero() {
         return () => clearTimeout(timer)
     }, [])
 
-    const currentPhrase = heroPhrases[phraseIndex].ar
     const isAr = i18n.language === 'ar'
+    const currentPhrase = isAr ? heroPhrases[phraseIndex].ar : heroPhrases[phraseIndex].en
 
     return (
         <section
             id="home"
-            className="relative flex items-center justify-center min-h-screen overflow-hidden"
+            className="flex overflow-hidden relative justify-center items-center min-h-screen"
         >
             {/* ── Animated background ── */}
             <div className="absolute inset-0 bg-slate-950">
@@ -55,7 +56,7 @@ export default function Hero() {
                 <div className="absolute w-[300px] h-[300px] rounded-full bg-brand-400 float-4" style={{ top: '50%', left: '60%', filter: 'blur(100px)', opacity: 0.08 }} />
             </div>
 
-            <div className="relative z-10 max-w-5xl px-4 mx-auto text-center sm:px-6">
+            <div className="relative z-10 px-4 mx-auto max-w-5xl text-center sm:px-6">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 animate-fade-in px-4 py-1.5 mb-8 text-sm font-medium rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400">
                     <span className="w-2 h-2 rounded-full animate-pulse bg-brand-400" />
@@ -73,7 +74,7 @@ export default function Hero() {
                 </h1>
 
                 {/* Cycling subtitle */}
-                <div className="h-8 mx-auto mb-10 animate-fade-up animation-delay-200">
+                <div className="mx-auto mb-10 h-8 animate-fade-up animation-delay-200">
                     <p
                         key={phraseIndex}
                         className="text-lg font-medium text-transparent md:text-xl animate-fade-in gradient-text typing-cursor"
@@ -84,10 +85,10 @@ export default function Hero() {
                 </div>
 
                 {/* CTAs */}
-                <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-up animation-delay-300">
+                <div className="flex flex-wrap gap-4 justify-center items-center animate-fade-up animation-delay-300">
                     <a
                         href="#projects"
-                        className="inline-flex items-center gap-2 px-8 py-4 font-bold text-white transition-all duration-200 rounded-full bg-brand-500 hover:bg-brand-600 hover:scale-105 shadow-brand-500/30 shadow-lg hover:shadow-brand-500/50"
+                        className="inline-flex gap-2 items-center px-8 py-4 font-bold text-white rounded-full shadow-lg transition-all duration-200 bg-brand-500 hover:bg-brand-600 hover:scale-105 shadow-brand-500/30 hover:shadow-brand-500/50"
                     >
                         {t('hero.cta_primary')}
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,7 +97,7 @@ export default function Hero() {
                     </a>
                     <a
                         href="#contact"
-                        className="px-8 py-4 font-semibold transition-all duration-200 rounded-full border bg-white/5 text-white hover:bg-white/10 hover:scale-105 border-white/10"
+                        className="px-8 py-4 font-semibold text-white rounded-full border transition-all duration-200 bg-white/5 hover:bg-white/10 hover:scale-105 border-white/10"
                     >
                         {t('hero.cta_secondary')}
                     </a>
@@ -114,7 +115,7 @@ export default function Hero() {
             </div>
 
             {/* Scroll indicator */}
-            <div className="flex absolute bottom-8 flex-col gap-2 items-center text-xs animate-bounce -translate-x-1/2 text-slate-500 left-1/2">
+            <div className="flex absolute bottom-8 left-1/2 flex-col gap-2 items-center text-xs animate-bounce -translate-x-1/2 text-slate-500">
                 <span>{t('hero.scroll')}</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -132,7 +133,7 @@ function StatCard({ stat, i18n, t }) {
     const label = labels[[1, 2, 3, 4].indexOf(stat.id) >= 0 ? [1, 2, 3, 4].indexOf(stat.id) : 0]
 
     return (
-        <div className="p-5 transition-all duration-300 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-brand-500/30 hover:bg-white/8">
+        <div className="p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 bg-white/5 border-white/10 hover:border-brand-500/30 hover:bg-white/8">
             <div className="mb-1 text-3xl font-extrabold md:text-4xl gradient-text">
                 {count}
             </div>
