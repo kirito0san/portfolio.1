@@ -1,94 +1,120 @@
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { company, stats } from '../../data/data'
+import { useCountUp } from '../../hooks/useCountUp'
+
+const heroPhrases = [
+    { ar: 'حول أفكارك إلى واقع رقمي مبهر', en: 'Turning Ideas Into Digital Reality' },
+    { ar: 'حلول تقنية مبتكرة لنمو أعمالك', en: 'Innovative Tech Solutions For Business Growth' },
+    { ar: 'نصمم تجارب رقمية لا تُنسى', en: 'We Design Unforgettable Digital Experiences' },
+    { ar: 'شريكك في النجاح الرقمي', en: 'Your Digital Success Partner' },
+]
 
 export default function Hero() {
     const { t, i18n } = useTranslation()
-    const isAr = i18n.language === 'ar'
+    const [phraseIndex, setPhraseIndex] = useState(0)
+    const [showStats, setShowStats] = useState(false)
 
-    const statLabels = [
-        t('stats.projects'),
-        t('stats.clients'),
-        t('stats.experience'),
-        t('stats.awards'),
-    ]
+    // Cycle through value propositions
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPhraseIndex((prev) => (prev + 1) % heroPhrases.length)
+        }, 3000)
+        return () => clearInterval(interval)
+    }, [])
+
+    // Show stats after a short delay for staggered entrance
+    useEffect(() => {
+        const timer = setTimeout(() => setShowStats(true), 600)
+        return () => clearTimeout(timer)
+    }, [])
+
+    const currentPhrase = heroPhrases[phraseIndex].ar
+    const isAr = i18n.language === 'ar'
 
     return (
         <section
             id="home"
-            className="flex overflow-hidden relative justify-center items-center min-h-screen"
+            className="relative flex items-center justify-center min-h-screen overflow-hidden"
         >
-            {/* Background */}
+            {/* ── Animated background ── */}
             <div className="absolute inset-0 bg-slate-950">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(79,97,251,0.25),transparent)]" />
+                {/* Dark base grid */}
                 <div
-                    className="absolute inset-0 opacity-[0.04]"
+                    className="absolute inset-0 opacity-[0.03]"
                     style={{
                         backgroundImage:
                             'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
                         backgroundSize: '60px 60px',
                     }}
                 />
+                {/* Floating orbs */}
+                <div className="absolute w-[600px] h-[600px] rounded-full bg-brand-500 float-1" style={{ top: '-10%', left: '-10%', filter: 'blur(120px)', opacity: 0.15 }} />
+                <div className="absolute w-[500px] h-[500px] rounded-full bg-gold-400 float-2" style={{ top: '20%', right: '-10%', filter: 'blur(120px)', opacity: 0.1 }} />
+                <div className="absolute w-[400px] h-[400px] rounded-full bg-purple-500 float-3" style={{ bottom: '-5%', left: '30%', filter: 'blur(120px)', opacity: 0.1 }} />
+                <div className="absolute w-[300px] h-[300px] rounded-full bg-brand-400 float-4" style={{ top: '50%', left: '60%', filter: 'blur(100px)', opacity: 0.08 }} />
             </div>
 
-            <div className="relative z-10 px-4 mx-auto max-w-5xl text-center sm:px-6">
+            <div className="relative z-10 max-w-5xl px-4 mx-auto text-center sm:px-6">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-500/20 rounded-full px-4 py-1.5 text-sm text-brand-400 font-medium mb-8 animate-fade-in">
+                <div className="inline-flex items-center gap-2 animate-fade-in px-4 py-1.5 mb-8 text-sm font-medium rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400">
                     <span className="w-2 h-2 rounded-full animate-pulse bg-brand-400" />
                     {t('hero.badge')}
                 </div>
 
-                {/* Tagline */}
-                <h1 className="mb-6 text-5xl font-extrabold leading-tight text-white md:text-7xl animate-fade-up">
-                    {isAr
-                        ? company.tagline.split(' ').map((word, i) => (
-                            <span key={i} className={i === 1 ? 'text-brand-400' : ''}>{word} </span>
-                        ))
-                        : company.taglineEn
-                            ? company.taglineEn.split(' ').map((word, i) => (
-                                <span key={i} className={i === 1 ? 'text-brand-400' : ''}>{word} </span>
-                            ))
-                            : company.tagline.split(' ').map((word, i) => (
-                                <span key={i} className={i === 1 ? 'text-brand-400' : ''}>{word} </span>
-                            ))
-                    }
+                {/* Tagline with gradient */}
+                <h1 className="mb-6 text-5xl font-extrabold leading-tight md:text-7xl animate-fade-up">
+                    {company.tagline.split(' ').map((word, i) => (
+                        <span
+                            key={i}
+                            className={i === 1 ? 'gradient-text' : ''}
+                        >{word} </span>
+                    ))}
                 </h1>
 
-                {/* Description */}
-                <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-slate-400 md:text-xl animate-fade-up animation-delay-200">
-                    {t('hero.description')}
-                </p>
+                {/* Cycling subtitle */}
+                <div className="h-8 mx-auto mb-10 animate-fade-up animation-delay-200">
+                    <p
+                        key={phraseIndex}
+                        className="text-lg font-medium text-transparent md:text-xl animate-fade-in gradient-text typing-cursor"
+                        style={{ animation: 'none' }}
+                    >
+                        {currentPhrase}
+                    </p>
+                </div>
 
                 {/* CTAs */}
-                <div className="flex flex-wrap gap-4 justify-center items-center animate-fade-up animation-delay-300">
+                <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-up animation-delay-300">
                     <a
                         href="#projects"
-                        className="px-8 py-4 font-bold text-white rounded-full shadow-lg transition-all duration-200 bg-brand-500 hover:bg-brand-600 hover:scale-105 shadow-brand-500/30"
+                        className="inline-flex items-center gap-2 px-8 py-4 font-bold text-white transition-all duration-200 rounded-full bg-brand-500 hover:bg-brand-600 hover:scale-105 shadow-brand-500/30 shadow-lg hover:shadow-brand-500/50"
                     >
                         {t('hero.cta_primary')}
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
                     </a>
                     <a
                         href="#contact"
-                        className="px-8 py-4 font-semibold text-white rounded-full border transition-all duration-200 bg-white/5 hover:bg-white/10 border-white/10 hover:scale-105"
+                        className="px-8 py-4 font-semibold transition-all duration-200 rounded-full border bg-white/5 text-white hover:bg-white/10 hover:scale-105 border-white/10"
                     >
                         {t('hero.cta_secondary')}
                     </a>
                 </div>
 
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-6 mt-20 md:grid-cols-4 animate-fade-up animation-delay-400">
-                    {stats.map((stat, i) => (
-                        <div key={stat.id} className="text-center">
-                            <div className="mb-1 text-3xl font-extrabold md:text-4xl text-brand-400">
-                                {stat.value}
-                            </div>
-                            <div className="text-sm text-slate-400">{statLabels[i]}</div>
-                        </div>
+                {/* Stats with glass cards and counter animation */}
+                <div
+                    className={`grid grid-cols-2 gap-4 mt-20 md:grid-cols-4 transition-all duration-700 ${showStats ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        }`}
+                >
+                    {stats.map((stat) => (
+                        <StatCard key={stat.id} stat={stat} i18n={i18n} t={t} />
                     ))}
                 </div>
             </div>
 
             {/* Scroll indicator */}
-            <div className="flex absolute bottom-8 left-1/2 flex-col gap-2 items-center text-xs animate-bounce -translate-x-1/2 text-slate-500">
+            <div className="flex absolute bottom-8 flex-col gap-2 items-center text-xs animate-bounce -translate-x-1/2 text-slate-500 left-1/2">
                 <span>{t('hero.scroll')}</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -96,4 +122,30 @@ export default function Hero() {
             </div>
         </section>
     )
+}
+
+function StatCard({ stat, i18n, t }) {
+    const visible = useScrollVisibility()
+    const count = useCountUp(stat.value.replace(/\D/g, '') + '+', visible)
+
+    const labels = [t('stats.projects'), t('stats.clients'), t('stats.experience'), t('stats.awards')]
+    const label = labels[[1, 2, 3, 4].indexOf(stat.id) >= 0 ? [1, 2, 3, 4].indexOf(stat.id) : 0]
+
+    return (
+        <div className="p-5 transition-all duration-300 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-brand-500/30 hover:bg-white/8">
+            <div className="mb-1 text-3xl font-extrabold md:text-4xl gradient-text">
+                {count}
+            </div>
+            <div className="text-sm text-slate-400">{label}</div>
+        </div>
+    )
+}
+
+function useScrollVisibility() {
+    const [visible, setVisible] = useState(false)
+    useEffect(() => {
+        const timer = setTimeout(() => setVisible(true), 800)
+        return () => clearTimeout(timer)
+    }, [])
+    return visible
 }

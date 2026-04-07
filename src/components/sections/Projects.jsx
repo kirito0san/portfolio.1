@@ -13,34 +13,39 @@ function ProjectCard({ project, onOpen }) {
     return (
         <div
             ref={ref}
-            className={`group cursor-pointer bg-slate-900/50 border border-white/5 hover:border-brand-500/30 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 ${isVisible ? 'animate-fade-up' : 'opacity-0'
+            className={`group relative cursor-pointer bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 ${isVisible ? 'animate-fade-up' : 'opacity-0'
                 }`}
             onClick={() => onOpen(project)}
         >
-            <div className="relative h-48 overflow-hidden">
-                <img
-                    src={project.image}
-                    alt={isAr ? project.title : (project.titleEn || project.title)}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-                <span className="absolute top-3 right-3 text-xs font-semibold bg-brand-500/80 text-white px-2.5 py-1 rounded-full backdrop-blur-sm">
-                    {isAr ? project.category : (project.categoryEn || project.category)}
-                </span>
-            </div>
-            <div className="p-5">
-                <h3 className="text-lg font-bold text-white mb-1 group-hover:text-brand-400 transition-colors">
-                    {isAr ? project.title : (project.titleEn || project.title)}
-                </h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
-                    {isAr ? project.description : (project.descriptionEn || project.description)}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                        <span key={tag} className="px-2 py-0.5 text-xs bg-white/5 text-slate-400 rounded">
-                            {tag}
-                        </span>
-                    ))}
+            {/* Gradient border on hover */}
+            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-500/15 via-transparent to-gold-400/10" />
+
+            <div className="relative z-10">
+                <div className="relative h-52 overflow-hidden">
+                    <img
+                        src={project.image}
+                        alt={isAr ? project.title : (project.titleEn || project.title)}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+                    <span className="absolute top-3 right-3 text-xs font-semibold bg-brand-500/80 text-white px-2.5 py-1 rounded-full backdrop-blur-sm">
+                        {isAr ? project.category : (project.categoryEn || project.category)}
+                    </span>
+                </div>
+                <div className="p-5">
+                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-brand-400 transition-colors">
+                        {isAr ? project.title : (project.titleEn || project.title)}
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                        {isAr ? project.description : (project.descriptionEn || project.description)}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                            <span key={tag} className="px-2.5 py-1 text-xs bg-brand-500/10 text-brand-400/80 rounded-full border border-brand-500/10">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,7 +55,7 @@ function ProjectCard({ project, onOpen }) {
 export default function Projects() {
     const { t, i18n } = useTranslation()
     const isAr = i18n.language === 'ar'
-    const [activeCategory, setActiveCategory] = useState(0) // index 0 = "All"
+    const [activeCategory, setActiveCategory] = useState(0)
     const [selectedProject, setSelectedProject] = useState(null)
 
     const categories = isAr ? projectCategories : (projectCategoriesEn || projectCategories)
@@ -64,8 +69,12 @@ export default function Projects() {
             })
 
     return (
-        <section id="projects" className="py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <section id="projects" className="relative py-24 overflow-hidden">
+            {/* Background depth orbs */}
+            <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-gold-400 section-orb-1" style={{ transform: 'translateX(50%)', opacity: 0.04 }} />
+            <div className="absolute top-0 left-0 w-80 h-80 rounded-full bg-brand-500 section-orb-2" style={{ transform: 'translateX(-30%)', top: '10%' }} />
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
                 <SectionHeading
                     title={t('projects.title')}
                     subtitle={t('projects.subtitle')}

@@ -40,4 +40,89 @@
   .opacity-0-init {
     opacity: 0;
   }
+
+  /* ── Floating orbs ── */
+  @keyframes float1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(80px, -60px) scale(1.05); }
+    66% { transform: translate(-40px, 40px) scale(0.95); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-70px, 50px) scale(1.1); }
+    66% { transform: translate(60px, -30px) scale(0.9); }
+  }
+  @keyframes float3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, 70px) scale(0.95); }
+    66% { transform: translate(-80px, -20px) scale(1.05); }
+  }
+  @keyframes float4 {
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    33% { transform: translate(-60px, -50px) scale(1.08) rotate(45deg); }
+    66% { transform: translate(40px, 60px) scale(0.92) rotate(-30deg); }
+  }
+
+  .float-1 { animation: float1 20s ease-in-out infinite; }
+  .float-2 { animation: float2 25s ease-in-out infinite; }
+  .float-3 { animation: float3 22s ease-in-out infinite; }
+  .float-4 { animation: float4 28s ease-in-out infinite; }
+
+  /* ── Marquee ── */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  /* ── Typing cursor blink ── */
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  .typing-cursor::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    color: currentColor;
+    margin-inline-start: 2px;
+  }
+
+  /* ── Gradient text utility ── */
+  .gradient-text {
+    background: linear-gradient(135deg, #4f61fb 0%, #748bff 40%, #f5c842 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Glow ── */
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(79, 97, 251, 0.4); }
+    50% { box-shadow: 0 0 20px 4px rgba(79, 97, 251, 0.6); }
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  /* ── Section decorative orbs ── */
+  .section-orb-1 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 9999px;
+    filter: blur(100px);
+    opacity: 0.06;
+    pointer-events: none;
+  }
+  .section-orb-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 9999px;
+    filter: blur(80px);
+    opacity: 0.05;
+    pointer-events: none;
+  }
 }

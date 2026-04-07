@@ -34,7 +34,8 @@
     "filter_all": "All",
     "visit": "Visit Project",
     "close": "Close"
-  },  "testimonials": {
+  },
+  "testimonials": {
     "title": "Client Testimonials",
     "subtitle": "Our clients' trust is the greatest award we can receive"
   },
@@ -63,5 +64,12 @@
   "modal": {
     "visit": "Visit Project",
     "close": "Close"
+  },
+  "techstack": {
+    "title": "Technologies We Use",
+    "subtitle": "Latest tools and technologies to provide you with the best possible solutions"
+  },
+  "floating_cta": {
+    "text": "Contact Us"
   }
 }
