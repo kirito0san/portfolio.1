@@ -12,17 +12,54 @@ export default function Navbar() {
     const navLinks = [
         { href: '#home', label: t('nav.home') },
         { href: '#services', label: t('nav.services') },
+        { href: '#benefits', label: t('nav.benefits') },
         { href: '#projects', label: t('nav.projects') },
-        { href: '#team', label: t('nav.team') },
         { href: '#testimonials', label: t('nav.testimonials') },
         { href: '#contact', label: t('nav.contact') },
     ]
 
+    // Scroll tracking: set active section based on IntersectionObserver
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50)
         window.addEventListener('scroll', onScroll)
         return () => window.removeEventListener('scroll', onScroll)
     }, [])
+
+    useEffect(() => {
+        const sections = navLinks.map((link) => link.href)
+        const observers = []
+        let mostVisibleSection = '#home'
+        let maxVisibleRatio = 0
+
+        sections.forEach((selector) => {
+            const el = document.querySelector(selector)
+            if (!el) return
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const ratio = entry.intersectionRatio
+                            if (ratio > maxVisibleRatio) {
+                                maxVisibleRatio = ratio
+                                mostVisibleSection = selector
+                            }
+                        } else {
+                            // Section left viewport
+                            if (selector === mostVisibleSection) {
+                                maxVisibleRatio = 0
+                            }
+                        }
+                    })
+                    setActiveLink(mostVisibleSection)
+                },
+                { threshold: [0, 0.15, 0.3, 0.5, 0.7, 1] }
+            )
+            observer.observe(el)
+            observers.push(observer)
+        })
+
+        return () => observers.forEach((o) => o.disconnect())
+    }, [navLinks])
 
     const handleNavClick = (href) => {
         setActiveLink(href)

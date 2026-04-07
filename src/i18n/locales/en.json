@@ -3,7 +3,6 @@
     "home": "Home",
     "services": "Services",
     "projects": "Projects",
-    "team": "Our Team",
     "testimonials": "Testimonials",
     "contact": "Contact Us",
     "cta": "Start Your Project"
@@ -25,18 +24,17 @@
     "title": "Our Services",
     "subtitle": "We provide integrated solutions covering all your digital needs"
   },
+  "benefits": {
+    "title": "Why Choose Us",
+    "subtitle": "We offer advantages that make your experience with us different and special"
+  },
   "projects": {
     "title": "Our Projects",
     "subtitle": "A selection of our finest work that we're proud to deliver to our clients",
     "filter_all": "All",
     "visit": "Visit Project",
     "close": "Close"
-  },
-  "team": {
-    "title": "Our Team",
-    "subtitle": "An elite group of creative specialists working passionately to achieve your goals"
-  },
-  "testimonials": {
+  },  "testimonials": {
     "title": "Client Testimonials",
     "subtitle": "Our clients' trust is the greatest award we can receive"
   },

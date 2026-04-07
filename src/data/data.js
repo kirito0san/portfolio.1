@@ -117,42 +117,6 @@ export const projects = [
     },
 ]
 
-// ── الفريق ───────────────────────────────────────────────────
-export const team = [
-    {
-        id: 1,
-        name: 'أحمد محمد',
-        role: 'المدير التنفيذي',
-        bio: 'خبرة +10 سنوات في قيادة المشاريع التقنية.',
-        avatar: 'https://i.pravatar.cc/150?img=11',
-        linkedin: '#',
-    },
-    {
-        id: 2,
-        name: 'سارة علي',
-        role: 'مديرة التصميم',
-        bio: 'مصممة UI/UX متخصصة في تجربة المستخدم العربي.',
-        avatar: 'https://i.pravatar.cc/150?img=47',
-        linkedin: '#',
-    },
-    {
-        id: 3,
-        name: 'كريم حسن',
-        role: 'مطور متكامل',
-        bio: 'متخصص في React و Node.js وبناء APIs.',
-        avatar: 'https://i.pravatar.cc/150?img=15',
-        linkedin: '#',
-    },
-    {
-        id: 4,
-        name: 'نور خالد',
-        role: 'مطورة موبايل',
-        bio: 'خبيرة في Flutter وتطبيقات الجوال متعددة المنصات.',
-        avatar: 'https://i.pravatar.cc/150?img=48',
-        linkedin: '#',
-    },
-]
-
 // ── آراء العملاء ─────────────────────────────────────────────
 export const testimonials = [
     {
@@ -187,6 +151,58 @@ export const stats = [
     { id: 2, value: '80+', label: 'عميل سعيد' },
     { id: 3, value: '7+', label: 'سنوات خبرة' },
     { id: 4, value: '15+', label: 'جائزة دولية' },
+]
+
+// ── ليه تختارنا ──────────────────────────────────────────────
+export const benefits = [
+    {
+        id: 1,
+        icon: '🚀',
+        title: 'سرعة في التنفيذ',
+        titleEn: 'Fast Delivery',
+        description: 'نلتزم بالجداول الزمنية ونسلم في الموعد المتفق عليه.',
+        descriptionEn: 'We commit to timelines and deliver on the agreed deadline.',
+    },
+    {
+        id: 2,
+        icon: '🏆',
+        title: 'جودة عالية',
+        titleEn: 'High Quality',
+        description: 'كود نظيف واختبار شامل يضمن أداء مستقر وتجربة مميزة.',
+        descriptionEn: 'Clean code and thorough testing ensure stable performance and great experience.',
+    },
+    {
+        id: 3,
+        icon: '🤝',
+        title: 'دعم فني متواصل',
+        titleEn: 'Ongoing Support',
+        description: 'نوفر دعم فني بعد التسليم لمساعدتك في أي وقت.',
+        descriptionEn: 'We provide post-delivery support to assist you whenever needed.',
+    },
+    {
+        id: 4,
+        icon: '💡',
+        title: 'حلول مخصصة',
+        titleEn: 'Custom Solutions',
+        description: 'كل مشروع فريد ونصممه خصيصاً ليناسب احتياجاتك.',
+        descriptionEn: 'Every project is unique and we design it specifically for your needs.',
+    },
+    {
+        id: 5,
+        icon: '🔐',
+        title: 'أمان البيانات',
+        titleEn: 'Data Security',
+        description: 'نحمي بياناتك وبيانات عملائك بأحدث تقنيات الحماية.',
+        descriptionEn: 'We protect your data and your customers\' with the latest security technologies.',
+    },
+    {
+        id: 6,
+        icon: '📈',
+        title: 'قابل للتوسع',
+        titleEn: 'Scalable',
+        description: 'بنية تحتية قوية تنمو مع مشروعك بدون قيود.',
+        descriptionEn: 'Strong infrastructure that grows with your project without limitations.',
+    },
 ]
 
 // ── فئات المشاريع (للـ filter) ───────────────────────────────

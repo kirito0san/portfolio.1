@@ -33,11 +33,11 @@ function TestimonialCard({ item, index }) {
                 }`}
         >
             <Stars count={item.rating} />
-            <p className="text-slate-300 leading-relaxed mb-6 italic">
+            <p className="mb-6 italic leading-relaxed text-slate-300">
                 "{isAr ? item.text : (item.textEn || item.text)}"
             </p>
-            <div className="flex items-center gap-3">
-                <img src={item.avatar} alt={item.name} className="w-11 h-11 rounded-full object-cover" />
+            <div className="flex gap-3 items-center">
+                <img src={item.avatar} alt={item.name} className="object-cover w-11 h-11 rounded-full" />
                 <div>
                     <p className="text-sm font-bold text-white">{item.name}</p>
                     <p className="text-xs text-slate-400">
@@ -53,13 +53,13 @@ export default function Testimonials() {
     const { t } = useTranslation()
 
     return (
-        <section id="testimonials" className="py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <section id="testimonials" className="py-40">
+            <div className="px-4 mx-auto max-w-7xl sm:px-6">
                 <SectionHeading
                     title={t('testimonials.title')}
                     subtitle={t('testimonials.subtitle')}
                 />
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid gap-6 md:grid-cols-3">
                     {testimonials.map((item, i) => (
                         <TestimonialCard key={item.id} item={item} index={i} />
                     ))}
