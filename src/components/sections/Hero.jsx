@@ -32,6 +32,9 @@ export default function Hero() {
 
     const isAr = i18n.language === 'ar'
     const currentPhrase = isAr ? heroPhrases[phraseIndex].ar : heroPhrases[phraseIndex].en
+    const companyTagline = isAr ? company.tagline : company.taglineEn
+    console.log(companyTagline, "ds");
+    console.log(company.tagline, "2");
 
     return (
         <section
@@ -65,7 +68,7 @@ export default function Hero() {
 
                 {/* Tagline with gradient */}
                 <h1 className="mb-6 text-5xl font-extrabold leading-tight md:text-7xl animate-fade-up">
-                    {company.tagline.split(' ').map((word, i) => (
+                    {companyTagline?.split(' ').map((word, i) => (
                         <span
                             key={i}
                             className={i === 1 ? 'gradient-text' : ''}
