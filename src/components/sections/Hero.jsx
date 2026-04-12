@@ -33,8 +33,7 @@ export default function Hero() {
     const isAr = i18n.language === 'ar'
     const currentPhrase = isAr ? heroPhrases[phraseIndex].ar : heroPhrases[phraseIndex].en
     const companyTagline = isAr ? company.tagline : company.taglineEn
-    console.log(companyTagline, "ds");
-    console.log(company.tagline, "2");
+
 
     return (
         <section
@@ -118,7 +117,7 @@ export default function Hero() {
             </div>
 
             {/* Scroll indicator */}
-            <div className="flex absolute bottom-8 left-1/2 flex-col gap-2 items-center text-xs animate-bounce -translate-x-1/2 text-slate-500">
+            <div className="flex absolute bottom-6 flex-col gap-2 items-center text-xs animate-bounce -translate-x-1/2 md:bottom-8 text-slate-500">
                 <span>{t('hero.scroll')}</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

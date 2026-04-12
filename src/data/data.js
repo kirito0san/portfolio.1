@@ -5,7 +5,7 @@
 
 // ── الهوية ──────────────────────────────────────────────────
 export const company = {
-    name: 'تبوك',          // ← Change the name here
+    name: 'Codev',          // ← Change the name here
     tagline: 'نبني مستقبلك الرقمي',
     taglineEn: 'Building Your Digital Future',
     description: 'شركة متخصصة في تقديم حلول رقمية متكاملة تساعد عملاءنا على النمو والتميز في السوق.',
