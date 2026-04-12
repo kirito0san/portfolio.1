@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { company } from '../../data/data'
 import LanguageSwitcher from '../ui/LanguageSwitcher'
-import { LogoIcon } from '../../assets/logoIcon'
+import { LogoIcon } from '../../assets/LogoIcon'
 
 export default function Navbar() {
     const { t } = useTranslation()
@@ -69,51 +69,49 @@ export default function Navbar() {
 
     return (
         <header
-            className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-                scrolled
-                    ? 'h-[70px] backdrop-blur-md bg-slate-950/90'
-                    : 'h-[80px] bg-transparent'
-            }`}
+            className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled
+                ? 'backdrop-blur-md h-[70px] bg-slate-950/90'
+                : 'bg-transparent h-[80px]'
+                }`}
         >
-            <div className="flex h-full justify-between items-center px-6 mx-auto max-w-7xl">
+            <div className="flex justify-between items-center px-6 mx-auto max-w-7xl h-full">
                 {/* Logo */}
                 <a
                     href="#home"
-                    className="flex items-center gap-3 group"
+                    className="flex gap-3 items-center group"
                     onClick={() => handleNavClick('#home')}
                 >
                     <div className="transition-transform duration-300 group-hover:scale-105">
                         <LogoIcon width={44} height={44} />
                     </div>
-                    <span className="hidden sm:block text-xl font-bold tracking-wide">
+                    <span className="hidden text-xl font-bold tracking-wide sm:block">
                         <span className="text-brand-400">C</span>
                         <span className="text-white">odev</span>
                     </span>
                 </a>
 
                 {/* Desktop nav */}
-                <nav className="hidden lg:flex items-center gap-1">
+                <nav className="hidden gap-1 items-center lg:flex">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
                             href={link.href}
                             onClick={() => handleNavClick(link.href)}
-                            className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
-                                activeLink === link.href
-                                    ? 'text-brand-400 bg-brand-500/15'
-                                    : 'text-slate-300 hover:text-white'
-                            }`}
+                            className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${activeLink === link.href
+                                ? 'text-brand-400 bg-brand-500/15'
+                                : 'text-slate-300 hover:text-white'
+                                }`}
                         >
                             {link.label}
                             {activeLink === link.href && (
-                                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand-400" />
+                                <span className="absolute bottom-0 left-1/2 w-1 h-1 rounded-full -translate-x-1/2 bg-brand-400" />
                             )}
                         </a>
                     ))}
                 </nav>
 
                 {/* Right side: lang switcher + CTA */}
-                <div className="flex items-center gap-3">
+                <div className="flex gap-3 items-center">
                     <div className="hidden md:block">
                         <LanguageSwitcher />
                     </div>
@@ -130,14 +128,14 @@ export default function Navbar() {
                 </div>
 
                 {/* Mobile: lang + hamburger */}
-                <div className="flex lg:hidden items-center gap-2">
+                <div className="flex gap-2 items-center lg:hidden">
                     <LanguageSwitcher className="!px-2 !py-1.5" />
                     <button
-                        className="p-2 text-slate-300 hover:text-white transition-colors"
+                        className="p-2 transition-colors text-slate-300 hover:text-white"
                         onClick={() => setMenuOpen(!menuOpen)}
                         aria-label="toggle menu"
                     >
-                        <div className="w-6 h-5 flex flex-col justify-between">
+                        <div className="flex flex-col justify-between w-6 h-5">
                             <span className={`block h-0.5 bg-current transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
                             <span className={`block h-0.5 bg-current transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
                             <span className={`block h-0.5 bg-current transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
@@ -148,28 +146,26 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             <div
-                className={`lg:hidden overflow-hidden transition-all duration-300 ${
-                    menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-                }`}
+                className={`lg:hidden overflow-hidden transition-all duration-300 ${menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+                    }`}
             >
-                <nav className="flex flex-col gap-1 px-4 pt-2 pb-6 backdrop-blur-md bg-slate-950/95 border-t border-white/5">
+                <nav className="flex flex-col gap-1 px-4 pt-2 pb-6 border-t backdrop-blur-md bg-slate-950/95 border-white/5">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
                             href={link.href}
                             onClick={() => handleNavClick(link.href)}
-                            className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                                activeLink === link.href
-                                    ? 'bg-brand-500/15 text-brand-400'
-                                    : 'text-slate-300 hover:text-white hover:bg-white/5'
-                            }`}
+                            className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${activeLink === link.href
+                                ? 'bg-brand-500/15 text-brand-400'
+                                : 'text-slate-300 hover:text-white hover:bg-white/5'
+                                }`}
                         >
                             {link.label}
                         </a>
                     ))}
                     <a
                         href="#contact"
-                        className="mt-3 flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-white rounded-xl bg-brand-500 hover:bg-brand-600 transition-colors"
+                        className="flex gap-2 justify-center items-center px-5 py-3 mt-3 text-sm font-semibold text-white rounded-xl transition-colors bg-brand-500 hover:bg-brand-600"
                         onClick={() => handleNavClick('#contact')}
                     >
                         <span>{t('nav.cta')}</span>
